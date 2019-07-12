@@ -19,7 +19,7 @@ class ModDescsHelper
                 ->where("`sd`.`directionID` = {$directionID}");
         }
         $items = $db->setQuery($query)->loadAssocList();
-        if (empty($items)) return array();
+        if (empty($items) || ($items[0]['time_mask'] === null)) return array();
         $result = array();
         foreach ($items as $item) {
             $arr = array();
@@ -43,10 +43,10 @@ class ModDescsHelper
                     $arr['tppd'] = null;
                 }
             }
-            $arr['now'] = self::isWorkedNow($item['time_mask'], $dat_1, $dat_2);
+            $arr['now'] = (($item['time_1'] !== null && $item['time_2'] !== null && $arr['tppd'] === false)) ? self::isWorkedNow($item['time_mask'], $dat_1, $dat_2) : false;
             $result[] = $arr;
         }
-        return $result;
+        return $result ?? array();
     }
 
     static function isWorkedNow(string $mask, JDate $time_1, JDate $time_2): bool
