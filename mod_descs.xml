@@ -7,11 +7,12 @@
 	<authorUrl>https://xakepok.com</authorUrl>
 	<copyright>A copyright</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<description>MOD_DESCS_XML_DESCRIPTION</description>
 
 	<files>
 		<filename module="mod_descs">mod_descs.php</filename>
+		<filename>helper.php</filename>
 		<folder>tmpl</folder>
 		<folder>language</folder>
 		<filename>mod_descs.xml</filename>
